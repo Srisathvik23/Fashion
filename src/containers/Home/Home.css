@@ -1,0 +1,35 @@
+.hero-image {
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* ---------------------------------------------------------------------------------------- */
+
+.h-circle-box-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 50px;
+}
+
+.h-circle-box {
+  background-color: rgb(243, 243, 237);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 20px 30px;
+  cursor: pointer;
+}
+
+.h-circle-img {
+  width: 160px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.h-circle-text {
+  font-size: 20px;
+  font-weight: 600;
+}

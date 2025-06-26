@@ -1,0 +1,63 @@
+.su-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.su-box {
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    text-align: center;
+}
+
+.su-box h2 {
+    margin-bottom: 20px;
+}
+
+.su-form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.su-form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.su-form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.su-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.su-btn:hover {
+    background-color: #333;
+}
+
+.su-link {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.su-link:hover {
+    text-decoration: underline;
+}
