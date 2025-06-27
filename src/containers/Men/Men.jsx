@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../Men/Men.css";
-import mshirt1 from "../../assets/Men/mshirt1.png";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { getAllProducts } from "../../services/menProductAPI";
 
 const Men = () => {
@@ -11,10 +9,7 @@ const Men = () => {
   const [query, setQuery] = useState("");
   const [sortOption, setSortOption] = useState("featured");
 
-  // ------------------------------------------------------------------------------
-
-  // API INTEGRATION
-
+  // Fetch Products
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -23,29 +18,24 @@ const Men = () => {
     try {
       const response = await getAllProducts();
       setProducts(response.data);
-      console.log(response.data, "jdcytdgcyuhdb");
     } catch (error) {
       console.error("Error fetching products:", error);
     }
   };
 
-  // ------------------------------------------------------------------------------
-  const processedData = products
-    .filter(
-      (item) =>
-        item.brand?.toLowerCase().includes(query.toLowerCase()) ||
-        item.title?.toLowerCase().includes(query.toLowerCase())
-    )
-    .sort((a, b) => {
-      if (sortOption === "lowToHigh") {
-        return parseFloat(a.price) - parseFloat(b.price);
-      } else if (sortOption === "highToLow") {
-        return parseFloat(b.price) - parseFloat(a.price);
-      } else if (sortOption === "popularity") {
-        return parseFloat(b.rating) - parseFloat(a.rating);
-      }
-      return 0;
-    });
+  const processedData = products.filter(
+    (item) =>
+      item.name.toLowerCase().includes(query.toLowerCase()) ||
+      item.description.toLowerCase().includes(query.toLowerCase())
+  )
+  .sort((a, b) => {
+    if (sortOption === "lowToHigh") {
+      return parseFloat(a.price) - parseFloat(b.price);
+    } else if (sortOption === "highToLow") {
+      return parseFloat(b.price) - parseFloat(a.price);
+    }
+    return 0;
+  });
 
   return (
     <div className="main-layout">
@@ -59,10 +49,9 @@ const Men = () => {
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
         >
-          <option value="featured ">Featured</option>
+          <option value="featured">Featured</option>
           <option value="lowToHigh">Price: Low to High</option>
           <option value="highToLow">Price: High to Low</option>
-          <option value="popularity">Popularity</option>
         </select>
       </section>
 
@@ -77,18 +66,21 @@ const Men = () => {
         />
 
         <ul className="men-container">
-          {products.length > 0 ? (
-            products.map((item) => (
-              <li key={item._id} className="men-item" onClick={() => navigate(`/product/${item.id}`)}>
+          {processedData.length > 0 ? (
+            processedData.map((item) => (
+              <li
+                key={item._id}
+                className="men-item"
+                onClick={() => navigate(`/product/${item._id}`)}
+              >
                 <img
                   src={`http://localhost:3000${item.image}`}
-                  alt={item.title}
+                  alt={item.name}
                 />
-                <h3>{item.brand}</h3>
-                <h6>{item.title}</h6>
-                <p>Rating: {item.rating}</p>
+                <h3>{item.name}</h3>
+                <p>{item.description}</p>
                 <p>
-                  {item.price} <span>{item.discount}</span>
+                  ₹{item.price} <span>{item.discount}</span>
                 </p>
               </li>
             ))

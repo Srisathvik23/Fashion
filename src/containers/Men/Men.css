@@ -109,6 +109,6 @@
 .men-item {
   border: 1px solid #ddd;
   border-radius: 6px;
-  padding: 10px;
+  padding: 10px 5px;
   text-align: center;
 }
