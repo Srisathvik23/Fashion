@@ -84,8 +84,8 @@ const Men = () => {
                   src={`http://localhost:3000${item.image}`}
                   alt={item.title}
                 />
-                <h3>{item.brand}</h3>
-                <h6>{item.title}</h6>
+                <h3>{item.name}</h3>
+                <h6>{item.description}</h6>
                 <p>Rating: {item.rating}</p>
                 <p>
                   {item.price} <span>{item.discount}</span>
