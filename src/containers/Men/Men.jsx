@@ -5,16 +5,11 @@ import { getAllProducts } from "../../services/menProductAPI";
 
 const Men = () => {
   const navigate = useNavigate();
-  const [products, setProducts] = useState([]);
+  const [menProducts, setProducts] = useState([]);
   const [query, setQuery] = useState("");
   const [sortOption, setSortOption] = useState("featured");
 
-  // Fetch Products
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  const fetchProducts = async () => {
+  const fetchMenProducts = async () => {
     try {
       const response = await getAllProducts();
       setProducts(response.data);
@@ -23,19 +18,25 @@ const Men = () => {
     }
   };
 
-  const processedData = products.filter(
-    (item) =>
-      item.name.toLowerCase().includes(query.toLowerCase()) ||
-      item.description.toLowerCase().includes(query.toLowerCase())
-  )
-  .sort((a, b) => {
-    if (sortOption === "lowToHigh") {
-      return parseFloat(a.price) - parseFloat(b.price);
-    } else if (sortOption === "highToLow") {
-      return parseFloat(b.price) - parseFloat(a.price);
-    }
-    return 0;
-  });
+  // Fetch Products
+  useEffect(() => {
+    fetchMenProducts();
+  }, []);
+
+  const processedData = menProducts
+    .filter(
+      (item) =>
+        item.name.toLowerCase().includes(query.toLowerCase()) ||
+        item.description.toLowerCase().includes(query.toLowerCase())
+    )
+    .sort((a, b) => {
+      if (sortOption === "lowToHigh") {
+        return parseFloat(a.price) - parseFloat(b.price);
+      } else if (sortOption === "highToLow") {
+        return parseFloat(b.price) - parseFloat(a.price);
+      }
+      return 0;
+    });
 
   return (
     <div className="main-layout">
@@ -49,7 +50,7 @@ const Men = () => {
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
         >
-          <option value="featured">Featured</option>
+          <option value="featured">Popularity</option>
           <option value="lowToHigh">Price: Low to High</option>
           <option value="highToLow">Price: High to Low</option>
         </select>
@@ -71,7 +72,7 @@ const Men = () => {
               <li
                 key={item._id}
                 className="men-item"
-                onClick={() => navigate(`/product/${item._id}`)}
+                onClick={() => navigate(`/menproduct/${item._id}`)}
               >
                 <img
                   src={`http://localhost:3000${item.image}`}

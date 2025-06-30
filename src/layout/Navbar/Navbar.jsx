@@ -8,12 +8,13 @@ import mainlogo from "../../assets/mainlogo.png";
 import { IoSearchCircleSharp } from "react-icons/io5";
 import { BiSolidHeartCircle } from "react-icons/bi";
 import { PiShoppingCartFill } from "react-icons/pi";
-import {useCart} from '../../contextapi/cartContext';
+import { useContext } from "react";
+import { CartContext } from "../../cartContext/CartContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
 
-  const { cartCount } = useCart(); // get cart count
+  const { cartCount } = useContext(CartContext);
 
   const navbarOffers = [
     " ----  20% OFF on all T-shirts! ---- ",
@@ -56,7 +57,9 @@ const Navbar = () => {
             <input type="text" placeholder="Search Here" />
             <IoSearchCircleSharp className="nb-1-search-icon" />
           </div>
-          <button className="nb-1-login" onClick={() => navigate("/login")}>Login</button>
+          <button className="nb-1-login" onClick={() => navigate("/login")}>
+            Login
+          </button>
         </div>
       </div>
 
@@ -72,29 +75,10 @@ const Navbar = () => {
 
         <div className="nb-2-icons">
           <BiSolidHeartCircle className="nb-2-search-icon" />
-          <div style={{ position: "relative" }}>
-          <PiShoppingCartFill className="nb-2-search-icon" />
-          {cartCount > 0 && (
-            <span
-              style={{
-                position: "absolute",
-                top: "-8px",
-                right: "-8px",
-                background: "red",
-                color: "white",
-                borderRadius: "50%",
-                width: "18px",
-                height: "18px",
-                fontSize: "12px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              {cartCount}
-            </span>
-          )}
-        </div>
+          <div className="nb-2-cart-icon" onClick={() => navigate("/cart")}>
+            <PiShoppingCartFill className="nb-2-search-icon" />
+            {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
+          </div>
         </div>
       </div>
     </div>

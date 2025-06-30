@@ -11,8 +11,9 @@ import Accessories from "../containers/Accessories/Accessories";
 import Beauty from "../containers/Beauty/Beauty";
 import Login from "../containers/Login/Login";
 import Signup from "../containers/Signup/Signup";
-import Product from "../containers/Men/menProductDetails/Product";
-import Productt from "../containers/Women/womenProductDetails/Product";
+import MenProduct from "../containers/Men/menProductDetails/MenProduct";
+import WomenProduct from "../containers/Women/womenProductDetails/WomenProduct";
+import Cart from "../containers/Cart/Cart";
 
 const index = () => {
   return (
@@ -28,8 +29,9 @@ const index = () => {
         <Route path="/beauty" element={<Beauty />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/product/:id" element={<Product />} />
-        {/* <Route path="/productt/:id" element={<Productt />} /> */}
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/menproduct/:id" element={<MenProduct />} />
+        <Route path="/womenproduct/:id" element={<WomenProduct />} />
       </Routes>
     </Layout>
   );

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // 🔗 Base URL of your backend
-const BASE_URL = "http://localhost:3000/menapi";
+const BASE_URL = "http://localhost:3000/womenapi";
 
 // 👉 Get all products
 export const getAllProducts = async () => {

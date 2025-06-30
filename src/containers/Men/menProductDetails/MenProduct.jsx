@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
-import "./Product.css";
+import "./MenProduct.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useCart } from "../../../contextapi/cartContext"; // import the cart context
+import { useContext } from "react";
+import { CartContext } from "../../../cartContext/CartContext";
 
-const Product = () => {
+const MenProduct = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [isAdded, setIsAdded] = useState(false);
-
-  const { addToCart, popupMessage } = useCart(); // use context here
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
-    fetchProduct();
+    fetchMenProduct();
   }, [id]);
 
-  const fetchProduct = async () => {
+  const fetchMenProduct = async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/api/get/${id}`);
+      const res = await axios.get(`http://localhost:3000/menapi/get/${id}`);
       setProduct(res.data);
     } catch (error) {
       console.error("Error fetching product:", error);
@@ -29,14 +29,7 @@ const Product = () => {
   }
 
   return (
-
-    
     <div className="pp-container">
-      {popupMessage && (
-        <div className="popup-message">
-          {popupMessage}
-        </div>
-      )}
       <div className="pp-product-grid">
         {/* Product Image */}
         <div className="pp-product-image">
@@ -57,15 +50,28 @@ const Product = () => {
           {/* <select id="pp-size">{product.size}
             <option>Small</option>
             <option>Medium</option>
-            <option>Large</option>
+            <option>Large</option>  
             <option>XL</option>
           </select> */}
           <p>{product.size}</p>
 
           <div className="pp-buttons">
-             <button
+            <button
               className="pp-btn pp-add"
-              onClick={addToCart}
+              onClick={() => {
+                addToCart({
+                  id: product._id,
+                  name: product.name,
+                  price: product.price,
+                  image: product.image,
+                });
+                setIsAdded(true);
+                setTimeout(() => setIsAdded(false), 1000);
+              }}
+              style={{
+                backgroundColor: isAdded ? "red" : "",
+                color: isAdded ? "white" : "",
+              }}
             >
               Add to Cart
             </button>
@@ -87,4 +93,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default MenProduct;
