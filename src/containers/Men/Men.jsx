@@ -23,19 +23,20 @@ const Men = () => {
     }
   };
 
-  const processedData = products.filter(
-    (item) =>
-      item.name.toLowerCase().includes(query.toLowerCase()) ||
-      item.description.toLowerCase().includes(query.toLowerCase())
-  )
-  .sort((a, b) => {
-    if (sortOption === "lowToHigh") {
-      return parseFloat(a.price) - parseFloat(b.price);
-    } else if (sortOption === "highToLow") {
-      return parseFloat(b.price) - parseFloat(a.price);
-    }
-    return 0;
-  });
+  const processedData = products
+    .filter(
+      (item) =>
+        item.name.toLowerCase().includes(query.toLowerCase()) ||
+        item.description.toLowerCase().includes(query.toLowerCase())
+    )
+    .sort((a, b) => {
+      if (sortOption === "lowToHigh") {
+        return parseFloat(a.price) - parseFloat(b.price);
+      } else if (sortOption === "highToLow") {
+        return parseFloat(b.price) - parseFloat(a.price);
+      }
+      return 0;
+    });
 
   return (
     <div className="main-layout">

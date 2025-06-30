@@ -13,6 +13,7 @@ import Login from "../containers/Login/Login";
 import Signup from "../containers/Signup/Signup";
 import Product from "../containers/Men/menProductDetails/Product";
 import Productt from "../containers/Women/womenProductDetails/Product";
+import Cart from "../containers/Cart/Cart";
 
 const index = () => {
   return (
@@ -28,8 +29,9 @@ const index = () => {
         <Route path="/beauty" element={<Beauty />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/product/:id" element={<Product />} />
-        {/* <Route path="/productt/:id" element={<Productt />} /> */}
+        <Route path="/product/:id" element={<Product />} />
       </Routes>
     </Layout>
   );

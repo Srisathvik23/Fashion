@@ -8,9 +8,13 @@ import mainlogo from "../../assets/mainlogo.png";
 import { IoSearchCircleSharp } from "react-icons/io5";
 import { BiSolidHeartCircle } from "react-icons/bi";
 import { PiShoppingCartFill } from "react-icons/pi";
+import { useContext } from "react";
+import { CartContext } from "../../cartContext/CartContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
+
+  const { cartCount } = useContext(CartContext);
 
   const navbarOffers = [
     " ----  20% OFF on all T-shirts! ---- ",
@@ -53,7 +57,9 @@ const Navbar = () => {
             <input type="text" placeholder="Search Here" />
             <IoSearchCircleSharp className="nb-1-search-icon" />
           </div>
-          <button className="nb-1-login" onClick={() => navigate("/login")}>Login</button>
+          <button className="nb-1-login" onClick={() => navigate("/login")}>
+            Login
+          </button>
         </div>
       </div>
 
@@ -69,7 +75,10 @@ const Navbar = () => {
 
         <div className="nb-2-icons">
           <BiSolidHeartCircle className="nb-2-search-icon" />
-          <PiShoppingCartFill className="nb-2-search-icon" />
+          <div className="nb-2-cart-icon" onClick={() => navigate("/cart")}>
+            <PiShoppingCartFill className="nb-2-search-icon" />
+            {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
+          </div>
         </div>
       </div>
     </div>

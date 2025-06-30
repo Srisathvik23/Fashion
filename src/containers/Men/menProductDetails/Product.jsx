@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./Product.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useContext } from "react";
+import { CartContext } from "../../../cartContext/CartContext";
 
 const Product = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [isAdded, setIsAdded] = useState(false);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     fetchProduct();
@@ -47,7 +50,7 @@ const Product = () => {
           {/* <select id="pp-size">{product.size}
             <option>Small</option>
             <option>Medium</option>
-            <option>Large</option>
+            <option>Large</option>  
             <option>XL</option>
           </select> */}
           <p>{product.size}</p>
@@ -56,6 +59,12 @@ const Product = () => {
             <button
               className="pp-btn pp-add"
               onClick={() => {
+                addToCart({
+                  id: product._id,
+                  name: product.name,
+                  price: product.price,
+                  image: product.image,
+                });
                 setIsAdded(true);
                 setTimeout(() => setIsAdded(false), 1000);
               }}

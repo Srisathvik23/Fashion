@@ -2,12 +2,15 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Main } from "react-router-dom";
 import ApplicationRoutes from "../src/routes/index";
+import { CartProvider } from "./cartContext/CartContext";
 
 function App() {
   return (
     <>
       <Main>
-        <ApplicationRoutes />
+        <CartProvider>
+          <ApplicationRoutes />
+        </CartProvider>
       </Main>
     </>
   );
