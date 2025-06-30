@@ -11,9 +11,6 @@ const MenProduct = () => {
   const [isAdded, setIsAdded] = useState(false);
   const { addToCart } = useContext(CartContext);
 
-  useEffect(() => {
-    fetchMenProduct();
-  }, [id]);
 
   const fetchMenProduct = async () => {
     try {
@@ -23,6 +20,11 @@ const MenProduct = () => {
       console.error("Error fetching product:", error);
     }
   };
+
+    useEffect(() => {
+    fetchMenProduct();
+  }, [id]);
+
 
   if (!product) {
     return <p>Loading...</p>;

@@ -14,10 +14,11 @@ const WomenProduct = () => {
   const { addToCart } = useContext(CartContext);
 
 
-  const fetchWomenProduct = async (id) => {
+  const fetchWomenProduct = async () => {
     try {
       const res = await axios.get(`http://localhost:3000/womenapi/get/${id}`);
       setProduct(res.data);
+      console.log("gvctvduycuwdvyb")
     } catch (error) {
       console.error("Error fetching product:", error);
     }
@@ -25,7 +26,7 @@ const WomenProduct = () => {
 
 
   useEffect(() => {
-    fetchWomenProduct(id);
+    fetchWomenProduct();
   }, [id]);
 
   

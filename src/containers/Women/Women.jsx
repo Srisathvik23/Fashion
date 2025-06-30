@@ -11,9 +11,7 @@ const Women = () => {
 
 
   // Fetch Products
-  useEffect(() => {
-    fetchWomenProducts();
-  }, []);
+
 
   const fetchWomenProducts = async () => {
     try {
@@ -23,6 +21,10 @@ const Women = () => {
       console.error("Error fetching products:", error);
     }
   };
+
+    useEffect(() => {
+    fetchWomenProducts();
+  }, []);
 
   const processedData = womenProducts
     .filter(
