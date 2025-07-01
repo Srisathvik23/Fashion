@@ -73,7 +73,7 @@ const MenProduct = () => {
                 color: isAdded ? "white" : "",
               }}
             >
-              Add to Cart
+              {isAdded ? "Added" : "Add to Cart"}
             </button>
 
             <button className="pp-btn pp-buy">Buy Now</button>

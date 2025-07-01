@@ -10,10 +10,7 @@ const Women = () => {
   const [sortOption, setSortOption] = useState("featured");
 
 
-  // Fetch Products
-  useEffect(() => {
-    fetchWomenProducts();
-  }, []);
+ 
 
   const fetchWomenProducts = async () => {
     try {
@@ -23,6 +20,11 @@ const Women = () => {
       console.error("Error fetching products:", error);
     }
   };
+
+   // Fetch Products
+  useEffect(() => {
+    fetchWomenProducts();
+  }, []);
 
   const processedData = womenProducts
     .filter(
@@ -72,7 +74,7 @@ const Women = () => {
               <li
                 key={item.id}
                 className="women-item"
-                onClick={() => navigate(`/womenproduct/${item.id}`)}
+                onClick={() => navigate(`/womenproduct/${item._id}`)}
               >
                 <img
                   src={`http://localhost:3000${item.image}`}

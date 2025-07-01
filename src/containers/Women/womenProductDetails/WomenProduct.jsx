@@ -5,16 +5,17 @@ import axios from "axios";
 import { useContext } from "react";
 import { CartContext } from "../../../cartContext/CartContext";
 
-
-
 const WomenProduct = () => {
   const { id } = useParams();
   const [productt, setProduct] = useState(null);
   const [isAdded, setIsAdded] = useState(false);
   const { addToCart } = useContext(CartContext);
 
+  useEffect(() => {
+    fetchWomenProduct();
+  }, [id]);
 
-  const fetchWomenProduct = async (id) => {
+  const fetchWomenProduct = async () => {
     try {
       const res = await axios.get(`http://localhost:3000/womenapi/get/${id}`);
       setProduct(res.data);
@@ -22,13 +23,6 @@ const WomenProduct = () => {
       console.error("Error fetching product:", error);
     }
   };
-
-
-  useEffect(() => {
-    fetchWomenProduct(id);
-  }, [id]);
-
-  
 
   if (!productt) {
     return <p>Loading...</p>;
@@ -47,7 +41,7 @@ const WomenProduct = () => {
 
         {/* Product Info */}
         <div className="pp-product-info">
-          <h1>{productt.title}</h1>
+          <h1>{productt.name}</h1>
           <p className="pp-description">{productt.description}</p>
           <p className="pp-price">{productt.price}</p>
           <p>Discount: {productt.discount}</p>

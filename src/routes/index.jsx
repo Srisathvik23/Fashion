@@ -32,6 +32,7 @@ const index = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/menproduct/:id" element={<MenProduct />} />
         <Route path="/womenproduct/:id" element={<WomenProduct />} />
+        
       </Routes>
     </Layout>
   );
