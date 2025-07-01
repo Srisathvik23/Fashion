@@ -5,14 +5,15 @@ import axios from "axios";
 import { useContext } from "react";
 import { CartContext } from "../../../cartContext/CartContext";
 
-
-
 const WomenProduct = () => {
   const { id } = useParams();
   const [productt, setProduct] = useState(null);
   const [isAdded, setIsAdded] = useState(false);
   const { addToCart } = useContext(CartContext);
 
+  useEffect(() => {
+    fetchWomenProduct();
+  }, [id]);
 
   const fetchWomenProduct = async () => {
     try {
@@ -24,12 +25,10 @@ const WomenProduct = () => {
     }
   };
 
-
   useEffect(() => {
     fetchWomenProduct();
   }, [id]);
 
-  
 
   if (!productt) {
     return <p>Loading...</p>;
@@ -48,7 +47,7 @@ const WomenProduct = () => {
 
         {/* Product Info */}
         <div className="pp-product-info">
-          <h1>{productt.title}</h1>
+          <h1>{productt.name}</h1>
           <p className="pp-description">{productt.description}</p>
           <p className="pp-price">{productt.price}</p>
           <p>Discount: {productt.discount}</p>

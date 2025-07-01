@@ -10,8 +10,7 @@ const Women = () => {
   const [sortOption, setSortOption] = useState("featured");
 
 
-  // Fetch Products
-
+ 
 
   const fetchWomenProducts = async () => {
     try {
@@ -22,7 +21,8 @@ const Women = () => {
     }
   };
 
-    useEffect(() => {
+   // Fetch Products
+  useEffect(() => {
     fetchWomenProducts();
   }, []);
 
@@ -74,7 +74,7 @@ const Women = () => {
               <li
                 key={item.id}
                 className="women-item"
-                onClick={() => navigate(`/womenproduct/${item.id}`)}
+                onClick={() => navigate(`/womenproduct/${item._id}`)}
               >
                 <img
                   src={`http://localhost:3000${item.image}`}
