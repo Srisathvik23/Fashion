@@ -1,0 +1,49 @@
+.pd-product-details {
+  display: flex;
+  gap: 40px;
+  padding: 20px;
+}
+
+.pd-product-details-img img {
+  width: 400px;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.pd-product-details-info {
+  flex: 1;
+}
+
+.pd-product-details-info h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.pd-product-details-info h2 {
+  color: green;
+  margin: 10px 0;
+}
+
+.pd-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pd-add-btn,
+.pd-buy-btn {
+  padding: 10px 20px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pd-add-btn {
+  background-color: black;
+}
+
+.pd-buy-btn {
+  background-color: green;
+}
