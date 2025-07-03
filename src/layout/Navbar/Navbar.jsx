@@ -73,8 +73,11 @@ const Navbar = () => {
           <li onClick={() => navigate("/beauty")}>BEAUTY</li>
         </ul>
 
-        <div className="nb-2-icons">
-          <BiSolidHeartCircle className="nb-2-search-icon" />
+        <div className="nb-2-icons" >
+          <div className="nb-2-cart-icon" onClick={() => navigate("/wishlist")}>
+            <BiSolidHeartCircle className="nb-2-search-icon" />
+          </div>
+
           <div className="nb-2-cart-icon" onClick={() => navigate("/cart")}>
             <PiShoppingCartFill className="nb-2-search-icon" />
             {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
