@@ -23,8 +23,8 @@ const ProductList = ({ title, fetchProductsApi, navigatePath }) => {
   const processedData = products
     .filter(
       (item) =>
-        item.name.toLowerCase().includes(query.toLowerCase()) ||
-        item.description.toLowerCase().includes(query.toLowerCase())
+        item.name.toLowerCase().includes(query.toLowerCase())
+      //  || item.description.toLowerCase().includes(query.toLowerCase())
     )
     .sort((a, b) => {
       if (sortOption === "lowToHigh") {
