@@ -11,6 +11,7 @@ import MenProduct from "../containers/Men/MenProducts/MenProduct";
 import WomenProduct from "../containers/Women/WomenProducts/WomenProduct";
 import Cart from "../containers/Cart/Cart";
 import Wishlist from "../containers/Wishlist";
+import Verify from "../containers/verify/verifyOTP";
 
 const index = () => {
   return (
@@ -22,6 +23,7 @@ const index = () => {
         <Route path="/women" element={<Women />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/verifyOTP" element={<Verify />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/menproduct/:id" element={<MenProduct />} />
         <Route path="/womenproduct/:id" element={<WomenProduct />} />
