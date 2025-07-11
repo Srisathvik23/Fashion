@@ -10,7 +10,6 @@ import Signup from "../containers/Signup/Signup";
 import MenProduct from "../containers/Men/MenProducts/MenProduct";
 import WomenProduct from "../containers/Women/WomenProducts/WomenProduct";
 import Cart from "../containers/Cart/Cart";
-import Wishlist from "../containers/Wishlist";
 
 const index = () => {
   return (
@@ -25,7 +24,6 @@ const index = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/menproduct/:id" element={<MenProduct />} />
         <Route path="/womenproduct/:id" element={<WomenProduct />} />
-        <Route path="/wishlist" element={<Wishlist />} />
         
       </Routes>
     </Layout>
